@@ -166,7 +166,8 @@ function initTabSwitching() {
                 el.style.opacity = "0";
                 el.style.transform = "translateY(50px)";
                 setTimeout(() => {
-                    el.style.transition = "all 0.8s ease-out";
+                    //redueced animation delay for each element
+                    el.style.transition = "all 0.6s ease-out"; 
                     el.style.opacity = "1";
                     el.style.transform = "translateY(0)";
                 }, index * 100);
@@ -213,6 +214,10 @@ function initContactForm() {
         }
     });
 }
+
+
+
+
 
 // Form validation
 function validateForm(data) {
@@ -533,6 +538,12 @@ document.getElementById('contactForm').addEventListener('submit', function() {
         page_url: window.location.href
     });
 });
+// ------------------------------------------------------------------------------------
+ document.querySelectorAll('.pricing-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+  });
 
 // Add print styles support
 function addPrintStyles() {
@@ -555,6 +566,35 @@ function addPrintStyles() {
 }
 
 addPrintStyles();
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Ensure the VANTA library is loaded and the target element exists
+//     const vantaBg = document.querySelector('.vanta-bg');
+//     if (window.VANTA && window.VANTA.CLOUDS2 && vantaBg) {
+//         window.VANTA.CLOUDS2({
+//             el: vantaBg,
+//             mouseControls: true,
+//             touchControls: true,
+//             gyroControls: true,
+//             minHeight: 100.00,
+//             minWidth: 100.00,
+//             scale: 1,
+//             texturePath: "./gallery/noise.png"
+//         });
+//     } else if (!vantaBg) {
+//         console.warn('VANTA background element ".vanta-bg" not found.');
+//     }
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+  VANTA.CLOUDS({
+    el: "#home",
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00
+  });
+});
 
 // Initialize all functionality when DOM is ready
 console.log('Urban Fly Tours website initialized successfully!');
